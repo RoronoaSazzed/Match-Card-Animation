@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Damion&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Palanquin&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>it's a Match! - Animation</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .parentDiv {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(
+          220deg,
+          #70ec9d 11.64%,
+          #707eff 70.29%,
+          #813cff 114.24%
+        );
+      }
+
+      .matchCard {
+        aspect-ratio: 9 / 16;
+        width: 300px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px 5px #09080927;
+        text-align: center;
+        background: linear-gradient(
+          220deg,
+          #70ec9d 11.64%,
+          #707eff 70.29%,
+          #813cff 114.24%
+        );
+      }
+
+      .matchTitle {
+        font-family: "Damion", cursive;
+        font-size: 30px;
+      }
+
+      .matchSub {
+        font-size: 15px;
+        font-family: "Palanquin", sans-serif;
+      }
+
+      .matchName {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .matchPic {
+        width: 200px;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        margin: 30px 0px;
+      }
+
+      .btnDiv {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .matchBtn {
+        padding: 10px 0px;
+        margin: 10px 0px;
+        flex: 1;
+        width: 100%;
+        font-family: "Palanquin", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        transition: all 250ms;
+        border-radius: 25px;
+        font-size: 12px;
+      }
+
+      .matchBtn:hover {
+        cursor: pointer;
+      }
+
+      #shareBtn {
+        color: white;
+        padding: 10px 0px;
+        margin: 10px 0px;
+        border: none;
+        font-family: "Palanquin", sans-serif;
+        background-color: transparent;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all 100ms;
+        text-decoration-color: transparent;
+      }
+
+      #shareBtn:hover,
+      #shareBtn:focus {
+        color: #15d798;
+        cursor: pointer;
+        text-decoration: underline #15d798;
+      }
+
+      #mOne {
+        background-color: #15d798;
+        border: none;
+        color: #ffffff;
+      }
+
+      #mOne:hover,
+      #mOne:focus {
+        background-color: #813cff;
+      }
+
+      #mTwo {
+        background-color: transparent;
+        border: 2px solid #15d798;
+        color: #090809;
+      }
+
+      #mTwo:hover,
+      #mTwo:focus {
+        border: 2px solid #813cff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parentDiv">
+      <div class="matchCard">
+        <h3 class="matchTitle">It's a Match!</h3>
+        <p class="matchSub">
+          <span class="matchName">You & Eren</span> <br />
+          have liked eachother.
+        </p>
+        <img
+          class="matchPic"
+          src="https://i.ytimg.com/vi/M_OauHnAFc8/maxresdefault.jpg"
+          alt=""
+        />
+
+        <div class="btnDiv">
+          <button class="matchBtn" id="mOne">Send Message</button>
+
+          <button class="matchBtn" id="mTwo">Keep Swiping</button>
+        </div>
+
+        <button id="shareBtn">Tell Your Friends</button>
+      </div>
+    </div>
+  </body>
+</html>
