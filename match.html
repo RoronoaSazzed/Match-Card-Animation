@@ -24,6 +24,16 @@
         box-sizing: border-box;
       }
 
+      ::-moz-selection {
+        color: white;
+        background-color: #813cff;
+      }
+
+      ::selection {
+        color: white;
+        background-color: #813cff;
+      }
+
       .parentDiv {
         min-height: 100vh;
         display: grid;
@@ -49,16 +59,23 @@
           #707eff 70.29%,
           #813cff 114.24%
         );
+        position: relative;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in-out forwards;
       }
 
       .matchTitle {
         font-family: "Damion", cursive;
         font-size: 30px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in-out 0.25s forwards;
       }
 
       .matchSub {
         font-size: 15px;
         font-family: "Palanquin", sans-serif;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in-out 0.5s forwards;
       }
 
       .matchName {
@@ -66,11 +83,40 @@
         font-weight: 600;
       }
 
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
       .matchPic {
         width: 200px;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
         margin: 30px 0px;
+        opacity: 0;
+        transform-origin: center bottom;
+        transform: translateX(-200px) rotate(-5deg);
+        animation: matchPicIn 0.5s ease-in-out 1s forwards;
+      }
+
+      @keyframes matchPicIn {
+        0% {
+          transform: translateX(-50px) rotate(-5deg);
+        }
+
+        85% {
+          transform: translateX(20px) rotate(5deg);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0px) rotate(0deg);
+        }
       }
 
       .btnDiv {
@@ -93,37 +139,49 @@
         transition: all 250ms;
         border-radius: 25px;
         font-size: 12px;
+        color: #ffffff;
       }
 
       .matchBtn:hover {
         cursor: pointer;
       }
 
-      #shareBtn {
-        color: white;
-        padding: 10px 0px;
-        margin: 10px 0px;
-        border: none;
-        font-family: "Palanquin", sans-serif;
-        background-color: transparent;
-        font-size: 12px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: all 100ms;
-        text-decoration-color: transparent;
-      }
-
-      #shareBtn:hover,
-      #shareBtn:focus {
-        color: #15d798;
-        cursor: pointer;
-        text-decoration: underline #15d798;
-      }
-
       #mOne {
         background-color: #15d798;
         border: none;
-        color: #ffffff;
+        opacity: 0;
+        animation: bOneIn 0.5s ease-out 1.5s forwards;
+      }
+
+      @keyframes bOneIn {
+        0% {
+          transform: translateX(-50px);
+        }
+
+        60% {
+          opacity: 1;
+          transform: translateX(10px);
+        }
+
+        70% {
+          opacity: 1;
+          transform: translateX(-10px);
+        }
+
+        80% {
+          opacity: 1;
+          transform: translateX(5px);
+        }
+
+        90% {
+          opacity: 1;
+          transform: translateX(-5px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
       }
 
       #mOne:hover,
@@ -134,12 +192,88 @@
       #mTwo {
         background-color: transparent;
         border: 2px solid #15d798;
-        color: #090809;
+        opacity: 0;
+        animation: bTwoIn 0.5s ease-out 1.5s forwards;
+      }
+
+      @keyframes bTwoIn {
+        0% {
+          transform: translateX(50px);
+        }
+
+        60% {
+          opacity: 1;
+          transform: translateX(-10px);
+        }
+
+        70% {
+          opacity: 1;
+          transform: translateX(10px);
+        }
+
+        80% {
+          opacity: 1;
+          transform: translateX(-5px);
+        }
+
+        90% {
+          opacity: 1;
+          transform: translateX(5px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
       }
 
       #mTwo:hover,
       #mTwo:focus {
         border: 2px solid #813cff;
+      }
+
+      #shareIcon {
+        text-align: center;
+        display: block;
+        margin: 15px auto 0px auto;
+        opacity: 0;
+        transform: translateY(25px);
+        animation: shareBtnIn 0.5s ease-in-out 2s forwards;
+      }
+
+      #shareBtn {
+        text-align: center;
+        color: white;
+        padding: 10px 0px;
+        border: none;
+        font-family: "Palanquin", sans-serif;
+        background-color: transparent;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all 100ms;
+        text-decoration-color: transparent;
+        opacity: 0;
+        transform: translateY(25px);
+        animation: shareBtnIn 0.5s ease-in-out 2s forwards;
+      }
+
+      @keyframes shareBtnIn {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
+
+      #shareBtn:hover,
+      #shareBtn:focus {
+        color: #15d798;
+        cursor: pointer;
+        text-decoration: underline #15d798;
       }
     </style>
   </head>
@@ -163,6 +297,63 @@
           <button class="matchBtn" id="mTwo">Keep Swiping</button>
         </div>
 
+        <svg
+          id="shareIcon"
+          width="25"
+          min-height="0"
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #813cff;
+              }
+              .cls-2 {
+                fill: #15d798;
+              }
+              .cls-3 {
+                opacity: 0.1;
+              }
+            </style>
+          </defs>
+          <title>share-flat</title>
+          <path
+            class="cls-1"
+            d="M106.68,277.33a21.33,21.33,0,0,1-9.56-40.42L395.79,87.58a21.34,21.34,0,1,1,19.08,38.17L116.21,275.08A21.24,21.24,0,0,1,106.68,277.33Z"
+          />
+          <path
+            class="cls-1"
+            d="M405.32,426.67a21.24,21.24,0,0,1-9.53-2.25L97.13,275.08a21.34,21.34,0,1,1,19.08-38.17L414.88,386.25a21.33,21.33,0,0,1-9.56,40.42Z"
+          />
+          <path
+            class="cls-2"
+            d="M512,106.67A106.67,106.67,0,1,1,405.33,0,106.84,106.84,0,0,1,512,106.67Z"
+          />
+          <path
+            class="cls-2"
+            d="M512,405.33A106.67,106.67,0,1,1,405.33,298.67,106.84,106.84,0,0,1,512,405.33Z"
+          />
+          <path
+            class="cls-2"
+            d="M213.33,256A106.67,106.67,0,1,1,106.67,149.33,106.84,106.84,0,0,1,213.33,256Z"
+          />
+          <g class="cls-3">
+            <path
+              d="M512,405.33A106.84,106.84,0,0,1,405.33,512V298.67A106.84,106.84,0,0,1,512,405.33Z"
+            />
+          </g>
+          <g class="cls-3">
+            <path d="M405.33,213.33V0a106.67,106.67,0,1,1,0,213.33Z" />
+          </g>
+          <g class="cls-3">
+            <path
+              d="M213.33,256A106.84,106.84,0,0,1,106.67,362.67V149.33A106.84,106.84,0,0,1,213.33,256Z"
+            />
+          </g>
+        </svg>
         <button id="shareBtn">Tell Your Friends</button>
       </div>
     </div>
